@@ -4,53 +4,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicación del Modelo</title>
+    <title>Evaluación RED - Modelo LORI-Cognitivo</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta de alto contraste */
+            --primary-dark: #0f172a;
+            --text-main: #1e293b;
+            --text-muted: #475569;
+            --bg-header: #f1f5f9;
+            --border-color: #cbd5e1;
+            --accent-green: #059669;
+            --accent-amber: #d97706;
+            --white: #ffffff;
+        }
+
+        .eval-container {
+            margin-top: 2.5rem;
+            color: var(--text-main);
+        }
+
+        .table-wrapper {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            table-layout: fixed;
+            /* Mantiene proporciones constantes */
+        }
+
+        th {
+            background-color: var(--primary-dark);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Zebra striping para mejor seguimiento visual */
+        tbody tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        td {
+            padding: 1.5rem 1.25rem;
+            vertical-align: middle;
+            border-bottom: 1px solid var(--border-color);
+            line-height: 1.6;
+        }
+
+        /* Estilo de los puntajes con alto contraste */
+        .score-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            /* Estilo squircle */
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .score-3 {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .score-2 {
+            background-color: #fbbf24;
+            color: #451a03;
+        }
+
+        .red-column {
+            text-align: center;
+            width: 120px;
+        }
+
+        .criterio-title {
+            display: block;
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .criterio-sub {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        .justification-cell {
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        /* Tarjetas de Resumen */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card-eval {
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-top: 6px solid;
+        }
+
+        .card-success {
+            border-top-color: var(--accent-green);
+        }
+
+        .card-warning {
+            border-top-color: var(--accent-amber);
+        }
+
+        @media (max-width: 900px) {
+            .table-wrapper {
+                overflow-x: auto;
+            }
+
+            table {
+                width: 900px;
+            }
+
+            /* Evita que la tabla se colapse en móviles */
+        }
+    </style>
 </head>
 
 <body>
     <header></header>
     <main>
-        <h1>Aplicación del Modelo de Evaluación</h1>
-        <p>Resultados detallados de la aplicación del instrumento de evaluación seleccionado.</p>
+        <h1>Análisis de Recursos Educativos Digitales</h1>
+        <p>Evaluación comparativa mediante el modelo <strong>LORI-Cognitivo</strong>.</p>
 
-        <div class="card">
-            <h2>Instrumento Utilizado: [Nombre del Modelo]</h2>
-            <p>Breve descripción de la escala de valoración.</p>
-        </div>
-
-        <section>
-            <h2>Resultados RED 1</h2>
-            <div class="card" style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+        <div class="eval-container">
+            <div class="table-wrapper">
+                <table>
                     <thead>
-                        <tr style="border-bottom: 2px solid var(--border-color); text-align: left;">
-                            <th style="padding: 1rem;">Criterio</th>
-                            <th style="padding: 1rem;">Puntaje</th>
-                            <th style="padding: 1rem;">Observaciones</th>
+                        <tr>
+                            <th style="width: 30%;">Criterio</th>
+                            <th class="red-column">RED 1</th>
+                            <th class="red-column">RED 2</th>
+                            <th style="width: 40%;">Justificación del Evaluador</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="border-bottom: 1px solid var(--border-color);">
-                            <td style="padding: 1rem;">Calidad del Contenido</td>
-                            <td style="padding: 1rem;">4.5/5</td>
-                            <td style="padding: 1rem;">Contenido preciso pero falta actualización reciente.</td>
+                        <tr>
+                            <td>
+                                <span class="criterio-title">1. Contenidos Simplificados</span>
+                                <span class="criterio-sub">Granularidad y claridad</span>
+                            </td>
+                            <td class="red-column">
+                                <div class="score-circle score-3">3</div>
+                            </td>
+                            <td class="red-column">
+                                <div class="score-circle score-3">3</div>
+                            </td>
+                            <td class="justification-cell">Diseño visual con carga textual mínima. El aprendizaje ocurre
+                                por experimentación directa sobre la recta numérica.</td>
                         </tr>
-                        <tr style="border-bottom: 1px solid var(--border-color);">
-                            <td style="padding: 1rem;">Usabilidad</td>
-                            <td style="padding: 1rem;">3.0/5</td>
-                            <td style="padding: 1rem;">Navegación confusa en dispositivos móviles.</td>
+                        <tr>
+                            <td>
+                                <span class="criterio-title">2. Feedback Positivo</span>
+                                <span class="criterio-sub">Guiado y amigable</span>
+                            </td>
+                            <td class="red-column">
+                                <div class="score-circle score-3">3</div>
+                            </td>
+                            <td class="red-column">
+                                <div class="score-circle score-3">3</div>
+                            </td>
+                            <td class="justification-cell">Entorno libre de penalizaciones. Los errores se visualizan
+                                como flechas de dirección, facilitando la autorregulación.</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="criterio-title">3. Motivación y Atención</span>
+                                <span class="criterio-sub">Control de distractores</span>
+                            </td>
+                            <td class="red-column">
+                                <div class="score-circle score-3">3</div>
+                            </td>
+                            <td class="red-column">
+                                <div class="score-circle score-3">3</div>
+                            </td>
+                            <td class="justification-cell">Interfaz minimalista y de alto contraste. Ausencia total de
+                                publicidad o elementos que fragmenten la atención.</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="criterio-title">4. Diseño y Usabilidad</span>
+                                <span class="criterio-sub">Intuitivo y predecible</span>
+                            </td>
+                            <td class="red-column">
+                                <div class="score-circle score-3">3</div>
+                            </td>
+                            <td class="red-column">
+                                <div class="score-circle score-3">3</div>
+                            </td>
+                            <td class="justification-cell">Iconografía universal. El uso de gestos de arrastre
+                                (drag-and-drop) es ideal para estudiantes con dificultades motrices o cognitivas.</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="criterio-title">5. Accesibilidad Cognitiva</span>
+                                <span class="criterio-sub">Multimodalidad y ritmo</span>
+                            </td>
+                            <td class="red-column">
+                                <div class="score-circle score-2">2</div>
+                            </td>
+                            <td class="red-column">
+                                <div class="score-circle score-2">2</div>
+                            </td>
+                            <td class="justification-cell">Control total del tiempo. Requiere mediación externa para
+                                lectura de texto, al no poseer narración auditiva nativa.</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </section>
+
+            <div class="summary-grid">
+                <div class="card-eval card-success">
+                    <h3 style="color: var(--accent-green); margin-top: 0;">Diagnóstico Final</h3>
+                    <p>Con una puntuación de <strong>14/15</strong>, los recursos de PhET son excelentes facilitadores
+                        para el aprendizaje autónomo e inclusivo.</p>
+                </div>
+                <div class="card-eval card-warning">
+                    <h3 style="color: var(--accent-amber); margin-top: 0;">Recomendación Pedagógica</h3>
+                    <p>Se sugiere al docente actuar como <strong>lector de apoyo</strong> o utilizar extensiones de
+                        "Text-to-Speech" para compensar la falta de audio nativo.</p>
+                </div>
+            </div>
+        </div>
     </main>
+
     <footer>
         &copy; 2024 Portafolio Académico.
     </footer>
-    <script type="module" src="/nav.js"></script>
+    <script type="module" src="./nav.js"></script>
 </body>
 
 </html>
